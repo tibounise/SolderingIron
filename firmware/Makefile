@@ -14,7 +14,7 @@ LDFLAGS=-Wl,-gc-sections -Wl,-relax
 AVRDUDE=avrdude
 
 TARGET=main
-OBJECT_FILES=main.o Application/SolderingIron.o HAL/I2C.o
+OBJECT_FILES=main.o Application/SolderingIron.o HAL/I2C.o HAL/SSD1306.o Core/Framebuffer.o Application/UI.o
 
 
 all: $(TARGET).hex
@@ -27,7 +27,10 @@ clean:
 
 main.o: main.cpp
 Application/SolderingIron.o: Application/SolderingIron.cpp
+Application/UI.o: Application/UI.cpp
+Core/Framebuffer.o: Core/Framebuffer.cpp
 HAL/I2C.o: HAL/I2C.cpp
+HAL/SSD1306.o: HAL/SSD1306.cpp
 
 %.obj: $(OBJECT_FILES)
 	$(CXX) $(CFLAGS) $(OBJECT_FILES) $(LDFLAGS) -o $@

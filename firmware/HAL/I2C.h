@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include <util/twi.h>
+
 #define SCL_CLOCK  100000L
 
 class I2C {
