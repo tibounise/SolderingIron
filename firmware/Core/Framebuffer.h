@@ -1,10 +1,12 @@
 #include <stdint.h>
+#include <avr/pgmspace.h>
 #include "../HAL/SSD1306.h"
 
 class Framebuffer {
 public:
     Framebuffer();
     void drawBitmap(uint8_t *bitmap, uint8_t height, uint8_t width, uint8_t pos_x, uint8_t pos_y);
+    void drawProgmemBuffer(const uint8_t *buffer);
     void clear();
     void show();
 private:
