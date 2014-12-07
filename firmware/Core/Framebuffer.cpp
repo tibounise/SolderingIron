@@ -4,7 +4,7 @@ Framebuffer::Framebuffer() {}
 
 void Framebuffer::init() {}
 
-void Framebuffer::drawBitmap(uint8_t *bitmap, uint8_t height, uint8_t width) {
+void Framebuffer::drawBitmap(uint8_t *bitmap, uint8_t height, uint8_t width, uint8_t pos_x, uint8_t pos_y) {
     
 }
 

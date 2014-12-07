@@ -1,8 +1,9 @@
+#include <util/twi.h>
 #include "I2C.h"
 
 I2C::I2C() {}
 
-I2C::init(uint8_t address) {
+void I2C::init(uint8_t address) {
     this->address = address;
     TWSR = 0;
     TWBR = ((F_CPU/SCL_CLOCK)-16)/2;

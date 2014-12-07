@@ -3,7 +3,3 @@
 SolderingIron::SolderingIron() {
 
 }
-
-void SolderingIron::run() {
-
-}

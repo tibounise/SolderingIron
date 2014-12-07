@@ -1,7 +1,6 @@
 #include "Application/SolderingIron.h"
 
-int main() {
-	SolderingIron iron();
-	iron.run();
+int main(void) {
+	SolderingIron iron;
 	return 0;
 }
