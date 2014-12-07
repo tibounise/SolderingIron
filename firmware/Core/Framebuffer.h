@@ -3,6 +3,7 @@
 class Framebuffer {
 public:
     Framebuffer();
+    void init();
     void drawBitmap(uint8_t *bitmap, uint8_t height, uint8_t width);
     void clear();
 private:

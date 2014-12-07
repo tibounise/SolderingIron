@@ -1,7 +1,7 @@
 #include "SSD1306.h"
 
 SSD1306::SSD1306() {
-    i2c = I2C::I2C(SSD1306_DEFAULT_ADDRESS);
+    i2c.init(SSD1306_DEFAULT_ADDRESS);
 
     sendCommand(SSD1306_DISPLAYOFF);
 
