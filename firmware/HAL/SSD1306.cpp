@@ -3,6 +3,7 @@
 SSD1306::SSD1306() {
     i2c.init(SSD1306_DEFAULT_ADDRESS);
 
+    // Turn display off
     sendCommand(SSD1306_DISPLAYOFF);
 
     sendCommand(SSD1306_SETDISPLAYCLOCKDIV);
@@ -16,6 +17,7 @@ SSD1306::SSD1306() {
     
     sendCommand(SSD1306_SETSTARTLINE | 0x00);
     
+    // We use internal charge pump
     sendCommand(SSD1306_CHARGEPUMP);
     sendCommand(0x14);
     
@@ -29,6 +31,7 @@ SSD1306::SSD1306() {
     sendCommand(SSD1306_SETCOMPINS);
     sendCommand(0x12);
 
+    // Max contrast
     sendCommand(SSD1306_SETCONTRAST);
     sendCommand(0xCF);
 
@@ -40,8 +43,10 @@ SSD1306::SSD1306() {
 
     sendCommand(SSD1306_DISPLAYALLON_RESUME);
 
+    // Non-inverted display
     sendCommand(SSD1306_NORMALDISPLAY);
 
+    // Turn display on
     sendCommand(SSD1306_DISPLAYON);
 }
 
@@ -69,6 +74,9 @@ void SSD1306::sendFramebuffer(uint8_t *buffer) {
     sendCommand(0);
     sendCommand(7);
 
+    // We have to send the buffer as 16 bytes packets
+    // Our buffer is 1024 bytes long, 1024/16 = 64
+    // We have to send 64 packets
     for (uint8_t packet = 0; packet < 64; packet++) {
         i2c.start();
         i2c.write(0x40);
