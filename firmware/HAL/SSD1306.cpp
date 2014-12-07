@@ -52,13 +52,6 @@ void SSD1306::sendCommand(uint8_t command) {
     i2c.stop();
 }
 
-void SSD1306::sendData(uint8_t data) {
-    i2c.start();
-    i2c.write(0x40);
-    i2c.write(data);
-    i2c.stop();
-}
-
 void SSD1306::invert(uint8_t inverted) {
     if (inverted) {
         sendCommand(SSD1306_INVERTDISPLAY);
@@ -76,22 +69,12 @@ void SSD1306::sendFramebuffer(uint8_t *buffer) {
     sendCommand(0);
     sendCommand(7);
 
-    /*for (uint8_t packet = 0; packet < 64; packet++) {
+    for (uint8_t packet = 0; packet < 64; packet++) {
         i2c.start();
         i2c.write(0x40);
-        for (int packet_byte = 0; packet_byte < 16; packet_byte++) {
-            i2c.write(buffer[packet*64 + packet_byte]);
+        for (uint8_t packet_byte = 0; packet_byte < 16; ++packet_byte) {
+            i2c.write(buffer[packet*16+packet_byte]);
         }
-        i2c.stop();
-    }*/
-    for (uint16_t buffer_byte = 0; buffer_byte < 1024; buffer_byte++) {
-        i2c.start();
-        i2c.write(0x40);
-        for (int i = 0; i < 16; ++i) {
-            i2c.write(buffer[buffer_byte]);
-            buffer_byte++;
-        }
-        buffer_byte--;
         i2c.stop();
     }
 }
