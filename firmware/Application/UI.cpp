@@ -9,7 +9,7 @@ void UI::renderSolderingScreen() {
 }
 
 void UI::renderRemoteModeScreen() {
-	this->framebuffer.drawProgmemBuffer(bmp_screen_connected);
+	this->framebuffer.drawBuffer(bmp_screen_connected);
 	this->framebuffer.show();
 }
 
