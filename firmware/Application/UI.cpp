@@ -27,3 +27,8 @@ void UI::renderRemoteModeScreen() {
 	this->framebuffer.drawBitmap(bmp_screen_connected,48,108,10,8);
 	this->framebuffer.show();
 }
+
+void UI::renderSplash() {
+	this->framebuffer.drawBuffer(bmp_splash);
+	this->framebuffer.show();
+}
