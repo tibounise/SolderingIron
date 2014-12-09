@@ -48,12 +48,13 @@ void Framebuffer::drawPixel(uint8_t pos_x, uint8_t pos_y, uint8_t pixel_status) 
 }
 
 void Framebuffer::drawVLine(uint8_t pos_x, uint8_t start, uint8_t length) {
-    uint8_t byte_v_start = start/8;
-    uint8_t byte_v_start_remaining = start%8;
+
 }
 
 void Framebuffer::drawHLine(uint8_t pos_y, uint8_t start, uint8_t length) {
-
+    for (uint8_t i = 0; i < length; ++i) {
+        this->drawPixel(i+start,pos_y,1);
+    }
 }
 
 void Framebuffer::clear() {
