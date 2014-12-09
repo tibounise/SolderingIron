@@ -32,3 +32,19 @@ void UI::renderSplash() {
 	this->framebuffer.drawBuffer(bmp_splash);
 	this->framebuffer.show();
 }
+
+void UI::drawText(char *text, uint8_t pos_x, uint8_t pos_y) {
+  uint8_t offset_x = 0;
+  for (int i = 0; i < strlen(text); ++i) {
+    if (text[i] == '0') {
+      this->framebuffer.drawBitmap(bmp_font_zero,13,8,pos_x+offset_x,pos_y);
+    }
+    if (text[i] == '1') {
+      this->framebuffer.drawBitmap(bmp_font_one,13,8,pos_x+offset_x,pos_y);
+    }
+    if (text[i] == '2') {
+      this->framebuffer.drawBitmap(bmp_font_two,13,8,pos_x+offset_x,pos_y);
+    }
+    offset_x += 9;
+  }
+}
