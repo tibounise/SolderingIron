@@ -4,7 +4,7 @@ F_CPU = 20000000
 
 INCLUDES = -I./include -I/usr/lib/avr/include
 CFLAGS=-g -Wall -mcall-prologues -mmcu=$(MCU) $(DEVICE_SPECIFIC_CFLAGS) $(INCLUDES) -Os 
-CPPFLAGS=-fno-exceptions $(INCLUDES) -Os -mmcu=$(MCU) -DF_CPU=$(F_CPU)
+CPPFLAGS=-fno-exceptions $(INCLUDES) -Os -mmcu=$(MCU) -DF_CPU=$(F_CPU) -std=c++11
 CC=avr-gcc
 CXX=avr-g++
 
