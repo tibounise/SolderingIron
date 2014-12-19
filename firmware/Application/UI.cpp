@@ -33,8 +33,8 @@ void UI::renderSplash() {
 	this->framebuffer.show();
 }
 
-void UI::drawText(char *text, uint8_t pos_x, uint8_t pos_y) {
-  uint8_t offset_x = 0;
+void UI::drawText(char *text, uint8_t pos_x, uint8_t pos_y, uint8_t *font) {
+  /*uint8_t offset_x = 0;
   for (int i = 0; i < strlen(text); ++i) {
     if (text[i] == '0') {
       this->framebuffer.drawBitmap(bmp_font_zero,13,8,pos_x+offset_x,pos_y);
@@ -46,5 +46,15 @@ void UI::drawText(char *text, uint8_t pos_x, uint8_t pos_y) {
       this->framebuffer.drawBitmap(bmp_font_two,13,8,pos_x+offset_x,pos_y);
     }
     offset_x += 9;
-  }
+  }*/
+    uint8_t offset_x = 0;
+
+    // Read informations from the font
+    uint8_t character_length = pgm_read_byte(font+3);
+    uint8_t character_height = pgm_read_byte(font+1);
+    uint8_t character_width = pgm_read_byte(font);
+
+    for (uint16_t current_char = 0; current_char < strlen(text); current_char++) {
+        this->framebuffer.drawBitmap(font+current_char*character_length,character_height,character_width,pos_x+offset_x,pos_y);
+    }
 }

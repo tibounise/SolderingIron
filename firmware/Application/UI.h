@@ -19,7 +19,7 @@ public:
     };
 private:
     Framebuffer framebuffer;
-    void drawText(char *text, uint8_t pos_x, uint8_t pos_y);
+    void drawText(char *text, uint8_t pos_x, uint8_t pos_y, uint8_t *font);
 };
 
 static const uint8_t PROGMEM bmp_screen_connected[] = {
